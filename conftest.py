@@ -16,8 +16,9 @@ def driver(request):
     elif request.param == "firefox":
         driver = webdriver.Firefox()
     driver.maximize_window()
-    request.cls.driver = driver
+
     yield driver
+    
     try:
         driver.delete_all_cookies()
         driver.execute_script("window.localStorage.clear();")
